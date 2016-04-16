@@ -1,59 +1,79 @@
 import React from 'react';
-import helpers from '../Utils/ajaxHelpers';
-import HomeUI from '../Components/HomeUI';
 
 const Home = React.createClass({
-  getInitialState (){
-    return {
-      logoName: '',
-      linkedIn: '',
-      github: '',
-      skills: [],
-      projects: []
-    }
-  },
-  componentDidMount(){
-    helpers.users.getUsers().then(function(res){
-      console.log("this is the res.data", res.data);
-      if (res.data.length === 1) {
-        console.log('got more than 1 in the database!');
-        this.setState({
-          logoName: res.data['0'].name,
-          linkedIn: res.data['0'].linkedin,
-          github: res.data['0'].github
-        });
-      console.log('initial state updated is: ', this.state.logoName);
-      }
-    }.bind(this))
-    helpers.projects.getProjects().then(function(res){
-      console.log('this is the project data', res.data);
-      var skillsArray = [];
-      for (var i = 0; i < res.data.length; i++) {
-        for (var j = 0; j < res.data[i].skills.length; j++) {
-          skillsArray.push(res.data[i].skills[j]);
-        }
-      }
-      console.log('the full set of skills is: ', skillsArray);
-      this.setState({
-        skills: skillsArray,
-        projects: res.data
-      })
-      console.log('these are the skills: ', this.state.skills);
-      console.log('these are the projects: ', this.state.projects);
-    }.bind(this))
-  },
-  render: function(){
-    return (
-      <div>
-        <HomeUI
-          logoProps={this.state.logoName}
-          linkedInProps={this.state.linkedIn}
-          githubProps={this.state.github}
-          skills={this.state.skills}
-          projects={this.state.projects}
-          />
+  render(){
+    return(
+      <div >
+        <section className="grid3d vertical" id="grid3d">
+          <div className="grid-wrap">
+            <div className="grid">
+              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img01"/></figure>
+              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img05"/></figure>
+              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img08"/></figure>
+              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img02"/></figure>
+              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img04"/></figure>
+              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img03"/></figure>
+              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img09"/></figure>
+              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img06"/></figure>
+              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img07"/></figure>
+              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img08"/></figure>
+            </div>
+          </div>
+          <div className="content">
+            <div>
+              <div className="dummy-img"></div>
+              <p className="dummy-text">1</p>
+              <p className="dummy-text">1</p>
+            </div>
+            <div>
+              <div className="dummy-img"></div>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+            </div>
+            <div>
+              <div className="dummy-img"></div>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+            </div>
+            <div>
+              <div className="dummy-img"></div>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+            </div>
+            <div>
+              <div className="dummy-img"></div>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+            </div>
+            <div>
+              <div className="dummy-img"></div>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+            </div>
+            <div>
+              <div className="dummy-img"></div>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+            </div>
+            <div>
+              <div className="dummy-img"></div>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+              <p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+            </div>
+            <div>
+              <div className="dummy-img"></div>
+              <p className="dummy-text">Test Last </p>
+            </div>
+            <div>
+              <div className="dummy-img"></div>
+              <p className="dummy-text">Text after last </p>
+            </div>
+            <span className="loading"></span>
+            <span className="icon close-content"></span>
+          </div>
+        </section>
       </div>
-    );
+    )
   }
 });
 
