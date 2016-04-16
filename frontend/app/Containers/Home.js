@@ -5,10 +5,10 @@ import helpers from '../Utils/ajaxHelpers';
 const Home = React.createClass({
   getInitialState(){
     return {
-      projects: [],
-    };
+      projects: []
+    }
   },
-  componentDidMount(){
+  componentWillMount(){
     helpers.projects.getProjects()
     .then(function(response){
       this.setState({
@@ -19,7 +19,7 @@ const Home = React.createClass({
   },
   render(){
     return(
-      <HomeUI />
+      <HomeUI allProjects={this.state.projects}/>
     )
   }
 });
