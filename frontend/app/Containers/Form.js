@@ -1,7 +1,7 @@
 import React from 'react';
 import helpers from '../Utils/ajaxHelpers';
 import FormUI from '../Components/FormUI';
-import AddProject from '../stateless/AddProjectUI';
+import AddProjectUI from '../stateless/AddProjectUI';
 import EditProject from '../Containers/EditProject';
 import DeleteProject from '../Containers/DeleteProject';
 
@@ -14,7 +14,9 @@ const Form = React.createClass({
       project: '',
       projectTitle: '',
       projectThumbnail:'',
-      projectSkills: ''
+      projectSkills: '',
+      projectImage: '',
+      projectContent: ''
     }
   },
   componentDidMount(){
@@ -79,7 +81,7 @@ const Form = React.createClass({
   handleProject(){
     switch (this.state.project) {
       case 'addProject':
-        return <AddProject onInput={this.handleInput} onAddProject={this.handleAddProject}/>
+        return <AddProjectUI onInput={this.handleInput} onAddProject={this.handleAddProject}/>
       break;
       case 'editProject':
         console.log('all projects are',this.state.allProjects);
@@ -97,7 +99,9 @@ const Form = React.createClass({
     const projectToAdd = {
       title: this.state.projectTitle,
       thumbnail: this.state.projectThumbnail,
-      skills: skillsArray
+      skills: skillsArray,
+      image: this.state.projectImage,
+      content: this.state.projectContent
     };
     // inserting obj in db
     helpers.projects.addProject(projectToAdd);
