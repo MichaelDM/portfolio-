@@ -3,15 +3,8 @@ import GridImageUI from '../stateless/GridImageUI';
 import codeDrops from '../codeDrops/codeDrops';
 
 const HomeUI = React.createClass({
-  getInitialState(){
-    return {
-      test: "http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w"
-    }
-  },
   componentDidUpdate(){
-    console.log('project list is ',this.props.allProjects);
     codeDrops(window);
-    console.log('after codeDrops loads');
   },
   render (){
     return (
