@@ -7,7 +7,6 @@ const FilterNav = React.createClass({
     }
   },
   componentDidMount(){
-    console.log('props.project is ', this.props.allProjects);
     this.setState({
       projects: this.props.allProjects
     });
