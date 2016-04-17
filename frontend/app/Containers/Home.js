@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeUI from '../Components/HomeUI';
 import FilterNav from '../Components/FilterNav';
+import Navigator from '../stateless/Navigator';
 import helpers from '../Utils/ajaxHelpers';
 
 const Home = React.createClass({
@@ -15,24 +16,37 @@ const Home = React.createClass({
         {content: ''}
       ],
       uniqueSkills: [],
-      classieUpdateCount: 0
+      classieUpdateCount: 0,
+      name: '',
+      linkedin: '',
+      github: ''
     }
   },
   //making ajax call to get all projects to pass them down as a prop
   componentDidMount(){
+    //getting navigator
+    // getting project
     helpers.projects.getProjects()
     .then(response => {
       //getting all skills (with redundancies)
       const allSkills= response.data.map(obj => {
           return obj.skills
       });
-      this.setState({
-        uniqueSkills: this.createListUniqueSkills(allSkills),
-        projects: response.data,
-        projectsFiltered: response.data
+      var responseProjects= response.data;
+      // getting navigator (because need to setState only once for classie to be updated only once and work)
+      helpers.users.getUsers()
+      .then(response => {
+        this.setState({
+          name: response.data[0].name,
+          linkedin: response.data[0].linkedin,
+          github: response.data[0].github,
+          uniqueSkills: this.createListUniqueSkills(allSkills),
+          projects: responseProjects,
+          projectsFiltered: responseProjects
+        });
       });
-      // console.log('state of projects is', this.state.projects);
     });
+
   },
   createListUniqueSkills(arr){
     const uniqueSkills = {};
@@ -68,20 +82,32 @@ const Home = React.createClass({
         }
       }
     });
-    // changing the state of the filtered projects to pass on
+    // changing the state of the filtered projects to pass on and making sure classie is only loaded once
     this.setState({
       projectsFiltered: filteredProjects,
+      classieUpdateCount: this.state.classieUpdateCount + 1
+    });
+  },
+  handleResetFilter(){
+    this.setState({
+      projectsFiltered: this.state.projects,
       classieUpdateCount: this.state.classieUpdateCount + 1
     });
   },
   render(){
     return (
       <div>
+        <Navigator
+          name={this.state.name}
+          linkedin={this.state.linkedin}
+          github={this.state.github}
+          onResetFilter={this.handleResetFilter}
+        />
         <FilterNav
           uniqueSkills={this.state.uniqueSkills}
           onFilter={this.handleFilter}
         />
-        <HomeUI 
+        <HomeUI
           allProjects={this.state.projectsFiltered}
           classieUpdateCount={this.state.classieUpdateCount}
           />
