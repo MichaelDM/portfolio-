@@ -18,23 +18,31 @@ const EditProjectUI = (props) => {
           placeholder="title"
           onChange={props.onInput}
           name="newTitle"
-          value={props.newTitle}>
-        </input>
+          value={props.newTitle}></input>
         <br/>
         <input
           placeholder="image"
           onChange={props.onInput}
           name="newThumbnail"
-          value={props.newThumbnail}>
-        </input>
+          value={props.newThumbnail}></input>
         <br/>
         <input
           placeholder="skills"
           onChange={props.onInput}
           name="newSkills"
-          value={props.newSkills}>
-        </input>
+          value={props.newSkills}></input>
         <br/>
+        <input
+          placeholder="project Image"
+          onChange={props.onInput}
+          name="newImage"
+          value={props.newImage}></input><br/>
+        <textarea
+          type="textarea"
+          placeholder="project Description"
+          onChange={props.onInput}
+          name="newContent"
+          value={props.newContent}></textarea><br/>
         <button type="button" onClick={props.onEditProject}>Edit Project</button>
       </div>
     </div>

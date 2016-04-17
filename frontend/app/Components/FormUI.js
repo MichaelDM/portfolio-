@@ -29,6 +29,9 @@ const FormUI = React.createClass({
         <button type='button' name='delete' onClick={this.props.onAjaxCall}>Delete</button>
 
         <hr/>
+
+
+
         <h1>Project</h1><br/>
         <p>please choose among the following:</p>
         <select onChange={this.props.onProjectChoice}>

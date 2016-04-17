@@ -8,6 +8,7 @@ const GridImageUI = React.createClass({
     return (
       <figure>
         <img src={this.props.object.thumbnail} />
+        <h2>{this.props.object.title}</h2>
       </figure>
     )
   }

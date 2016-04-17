@@ -14,7 +14,9 @@ const Form = React.createClass({
       project: '',
       projectTitle: '',
       projectThumbnail:'',
-      projectSkills: ''
+      projectSkills: '',
+      projectImage: '',
+      projectContent:''
     }
   },
   componentDidMount(){
@@ -24,7 +26,7 @@ const Form = React.createClass({
         this.setState({
           logoName: res.data['0'].name,
           linkedIn: res.data['0'].linkedin,
-          github: res.data['0'].github
+          github: res.data['0'].github,
         });
       console.log('initial state updated is: ', this.state.logoName);
       }
@@ -44,7 +46,7 @@ const Form = React.createClass({
         const user = {
           name: this.state.logoName,
           linkedin: this.state.linkedIn,
-          github: this.state.github
+          github: this.state.github,
         };
         helpers.users.addUser(user)
         .then(function(response){
@@ -82,7 +84,6 @@ const Form = React.createClass({
         return <AddProject onInput={this.handleInput} onAddProject={this.handleAddProject}/>
       break;
       case 'editProject':
-        console.log('all projects are',this.state.allProjects);
         return <EditProject allProjects={this.state.allProjects}/>
       break;
       case 'deleteProject':
@@ -97,7 +98,9 @@ const Form = React.createClass({
     const projectToAdd = {
       title: this.state.projectTitle,
       thumbnail: this.state.projectThumbnail,
-      skills: skillsArray
+      skills: skillsArray,
+      image: this.state.projectImage,
+      content: this.state.projectContent
     };
     // inserting obj in db
     helpers.projects.addProject(projectToAdd);
@@ -106,8 +109,10 @@ const Form = React.createClass({
     return (
       <div>
         <FormUI onInput={this.handleInput}
-          onAjaxCall={this.handleAjaxCall} logoProps={this.state.logoName}
-          linkedInProps={this.state.linkedIn} githubProps={this.state.github}
+          onAjaxCall={this.handleAjaxCall}
+          logoProps={this.state.logoName}
+          linkedInProps={this.state.linkedIn}
+          githubProps={this.state.github}
           onProjectChoice={this.handleProjectChoice}
           onProject={this.handleProject}
           />
