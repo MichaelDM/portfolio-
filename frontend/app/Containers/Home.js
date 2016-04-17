@@ -14,7 +14,8 @@ const Home = React.createClass({
         {image: ''},
         {content: ''}
       ],
-      uniqueSkills: []
+      uniqueSkills: [],
+      classieUpdateCount: 0
     }
   },
   //making ajax call to get all projects to pass them down as a prop
@@ -69,7 +70,8 @@ const Home = React.createClass({
     });
     // changing the state of the filtered projects to pass on
     this.setState({
-      projectsFiltered: filteredProjects
+      projectsFiltered: filteredProjects,
+      classieUpdateCount: this.state.classieUpdateCount + 1
     });
   },
   render(){
@@ -79,7 +81,10 @@ const Home = React.createClass({
           uniqueSkills={this.state.uniqueSkills}
           onFilter={this.handleFilter}
         />
-        <HomeUI allProjects={this.state.projectsFiltered}/>
+        <HomeUI 
+          allProjects={this.state.projectsFiltered}
+          classieUpdateCount={this.state.classieUpdateCount}
+          />
       </div>
     )
   }

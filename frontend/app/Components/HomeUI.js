@@ -5,7 +5,9 @@ import ContentUI from '../stateless/ContentUI';
 
 const HomeUI = React.createClass({
   componentDidUpdate(){
-    codeDrops(window);
+    if (this.props.classieUpdateCount <1){
+      codeDrops(window);
+    }
   },
   render (){
     return (
