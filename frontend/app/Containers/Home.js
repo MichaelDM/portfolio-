@@ -5,7 +5,11 @@ import helpers from '../Utils/ajaxHelpers';
 const Home = React.createClass({
   getInitialState(){
     return {
-      projects: []
+      projects: [
+        {title: ''},
+        {thumbnail: ''},
+        {skills: ''}
+      ]
     }
   },
   componentWillMount(){

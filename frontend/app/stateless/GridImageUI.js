@@ -7,7 +7,7 @@ const GridImageUI = React.createClass({
   render(){
     return (
       <figure>
-        <img src={this.props.object.thumbnail} alt="img01"/>
+        <img src={this.props.object.thumbnail} />
       </figure>
     )
   }

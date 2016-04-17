@@ -1,34 +1,36 @@
 import React from 'react';
 import GridImageUI from '../stateless/GridImageUI';
+import codeDrops from '../codeDrops/codeDrops';
 
 const HomeUI = React.createClass({
+  getInitialState(){
+    return {
+      test: "http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w"
+    }
+  },
+  componentDidUpdate(){
+    console.log('project list is ',this.props.allProjects);
+    codeDrops(window);
+    console.log('after codeDrops loads');
+  },
   render (){
     return (
       <div >
         <section className="grid3d vertical" id="grid3d">
           <div className="grid-wrap">
             <div className="grid">
-              {this.props.allProjects.map(
-                function(obj, i){
-                  return(
-                    <GridImageUI key={i} object={obj}/>
-                  )
-                }
-              )}
-              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img02"/></figure>
-              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img05"/></figure>
-              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img08"/></figure>
-              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img02"/></figure>
-              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img04"/></figure>
-              <figure><img src="http://static1.squarespace.com/static/55f87e18e4b04ad8ee1971e2/t/56209275e4b04789570d6970/1444975225938/behind+the+image+2.jpg?format=300w" alt="img03"/></figure>
+
+              {this.props.allProjects.map(function(obj, key){
+                return ( <GridImageUI key={key} object={obj}/> )
+              })}
 
             </div>
           </div>
           <div className="content">
             <div>
               <div className="dummy-img"></div>
-              <p className="dummy-text">1</p>
-              <p className="dummy-text">1</p>
+              <p className="dummy-text">Michael</p>
+              <p className="dummy-text">is the best</p>
             </div>
             <div>
               <div className="dummy-img"></div>
