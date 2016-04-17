@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ContentUI = (props) => {
-  console.log(props.object);
   return (
     <div>
       <div><img src={props.object.image}/></div>

@@ -13,11 +13,9 @@ const HomeUI = React.createClass({
         <section className="grid3d vertical" id="grid3d">
           <div className="grid-wrap">
             <div className="grid">
-
               {this.props.allProjects.map(function(obj, key){
                 return ( <GridImageUI key={key} object={obj}/> )
               })}
-
             </div>
           </div>
           <div className="content">

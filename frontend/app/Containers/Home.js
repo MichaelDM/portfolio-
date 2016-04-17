@@ -12,10 +12,12 @@ const Home = React.createClass({
       ]
     }
   },
-  componentWillMount(){
+  //making ajax call to get all projects to pass them down as a prop
+  componentDidMount(){
     helpers.projects.getProjects()
     .then(function(response){
       this.setState({
+        filteredProjects: response.data,
         projects: response.data
       });
       console.log('state of projects is', this.state.projects);
@@ -23,7 +25,10 @@ const Home = React.createClass({
   },
   render(){
     return(
-      <HomeUI allProjects={this.state.projects}/>
+      <div className="homeExternal">
+        <HomeUI
+          allProjects={this.state.projects}/>
+      </div>
     )
   }
 });
