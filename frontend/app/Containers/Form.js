@@ -84,7 +84,6 @@ const Form = React.createClass({
         return <AddProjectUI onInput={this.handleInput} onAddProject={this.handleAddProject}/>
       break;
       case 'editProject':
-        console.log('all projects are',this.state.allProjects);
         return <EditProject allProjects={this.state.allProjects}/>
       break;
       case 'deleteProject':

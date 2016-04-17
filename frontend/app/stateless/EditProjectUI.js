@@ -35,6 +35,20 @@ const EditProjectUI = (props) => {
           value={props.newSkills}>
         </input>
         <br/>
+        <input
+          placeholder="Project Image"
+          onChange={props.onInput}
+          name="newImage"
+          value={props.newImage}>
+        </input>
+        <br/>
+        <textarea
+          placeholder="skills"
+          onChange={props.onInput}
+          name="newContent"
+          value={props.newContent}>
+        </textarea>
+        <br/>
         <button type="button" onClick={props.onEditProject}>Edit Project</button>
       </div>
     </div>

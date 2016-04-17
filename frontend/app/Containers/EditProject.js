@@ -10,7 +10,9 @@ const EditProject = React.createClass({
       oldID: '',
       newTitle: '',
       newThumbnail: '',
-      newSkills:''
+      newSkills:'',
+      newImage: '',
+      newContent: ''
     }
   },
   // populate form with correct project
@@ -27,7 +29,9 @@ const EditProject = React.createClass({
       this.setState({
         newTitle: response.data['0'].title,
         newThumbnail: response.data['0'].thumbnail,
-        newSkills: response.data['0'].skills
+        newSkills: response.data['0'].skills,
+        newImage: response.data['0'].image,
+        newContent: response.data['0'].content
       });
     });
   },
@@ -51,7 +55,9 @@ const EditProject = React.createClass({
       oldID: this.state.oldID,
       title: this.state.newTitle,
       thumbnail: this.state.newThumbnail,
-      skills: skillsArray
+      skills: skillsArray,
+      image: this.state.newImage,
+      content: this.state.newContent
     };
     console.log('project to add is ', projectToAdd);
     // inserting obj in db
@@ -70,6 +76,8 @@ const EditProject = React.createClass({
       newTitle={this.state.newTitle}
       newThumbnail={this.state.newThumbnail}
       newSkills={this.state.newSkills}
+      newImage={this.state.newImage}
+      newContent={this.state.newContent}
       onEditProject={this.handleEditProject}
       />
     )

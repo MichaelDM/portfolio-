@@ -40,7 +40,9 @@ router.put('/update', function(req, res){
   var updateTo = {
     title: req.body.title,
     thumbnail: req.body.thumbnail,
-    skills: req.body.skills
+    skills: req.body.skills,
+    image: req.body.image,
+    content: req.body.content
   };
   projectsCollection.update(old, updateTo);
 });
