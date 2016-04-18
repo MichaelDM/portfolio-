@@ -6,16 +6,14 @@ import helpers from '../Utils/ajaxHelpers';
 const Home = React.createClass({
   getInitialState(){
     return {
-      projects: '',
-      projectsFiltered:[
+      projects:[
         {title: ''},
         {thumbnail: ''},
         {skills: ''},
         {image: ''},
         {content: ''}
       ],
-      uniqueSkills: [],
-      classieUpdateCount: 0
+      uniqueSkills: []
     }
   },
   //making ajax call to get all projects to pass them down as a prop
@@ -28,8 +26,7 @@ const Home = React.createClass({
       });
       this.setState({
         uniqueSkills: this.createListUniqueSkills(allSkills),
-        projects: response.data,
-        projectsFiltered: response.data
+        projects: response.data
       });
       // console.log('state of projects is', this.state.projects);
     });
@@ -51,40 +48,14 @@ const Home = React.createClass({
     // console.log('usk', uniqueSkills);
     return uniqueSkillsArr;
   },
-  handleFilter(e){
-    const filterKey = e.target.innerText;
-    // find all projects with that filter key
-    // creating an new of projects with a skill that match the filter key
-    const filteredProjects = this.state.projects.filter( project =>{
-      // got through each project
-      // make sure skills is an array
-      if (typeof(project.skills) !== "string"){
-        // loop through all the skills
-        for (var j=0; j<project.skills.length; j++){
-          // return true if one of the skills match with filter key
-          if (project.skills[j] === filterKey){
-            return true
-          }
-        }
-      }
-    });
-    // changing the state of the filtered projects to pass on
-    this.setState({
-      projectsFiltered: filteredProjects,
-      classieUpdateCount: this.state.classieUpdateCount + 1
-    });
-  },
   render(){
     return (
       <div>
         <FilterNav
           uniqueSkills={this.state.uniqueSkills}
-          onFilter={this.handleFilter}
         />
-        <HomeUI 
-          allProjects={this.state.projectsFiltered}
-          classieUpdateCount={this.state.classieUpdateCount}
-          />
+        <HomeUI
+          allProjects={this.state.projects}/>
       </div>
     )
   }
