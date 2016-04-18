@@ -63,6 +63,12 @@ const Home = React.createClass({
     return uniqueSkillsArr;
   },
   handleResetFilter(){
+    var allGrids = document.querySelectorAll('.gridImage');
+      console.log(allGrids);
+      console.log(typeof(allGrids));
+      for (var i=0; i<allGrids.length; i++){
+        allGrids[i].style.display = 'inline-block';
+      }
   },
   render(){
     return (
