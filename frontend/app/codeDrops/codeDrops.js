@@ -219,7 +219,12 @@ grid3D.prototype._showContent = function( pos ) {
         classie.removeClass( self.loader, 'show' );
         // in the end of the transition set class "show" to respective content item
         classie.addClass( self.contentItems[ pos ], 'show' );
-      }, 1000 );
+
+
+        //MIKE I CHANGED TE LINE BELOWWWW !!!!!!  ORIGINALLY SETIMOUT AT 1000 
+
+
+      }, 0 );
       // show content area
       classie.addClass( self.contentEl, 'show' );
       // show loader

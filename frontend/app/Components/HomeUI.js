@@ -20,8 +20,8 @@ const HomeUI = React.createClass({
           </div>
           <div className="content">
             {this.props.allProjects.map(function(obj, key){
-              return ( <ContentUI key={key} object={obj}/> )
-              })}
+            return ( <ContentUI key={key} object={obj}/> )
+            })}
             <span className="loading"></span>
             <span className="icon close-content"></span>
           </div>
