@@ -50,13 +50,8 @@ const Home = React.createClass({
   render(){
     return (
       <div>
-        <FilterNav
-          uniqueSkills={this.state.uniqueSkills}
-        />
-        <HomeUI
-          allProjects={this.state.projects}
-          />
-
+        <FilterNav uniqueSkills={this.state.uniqueSkills}/>
+        <HomeUI allProjects={this.state.projects}/>
       </div>
     )
   }
