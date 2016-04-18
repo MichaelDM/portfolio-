@@ -28,7 +28,6 @@ const Home = React.createClass({
         uniqueSkills: this.createListUniqueSkills(allSkills),
         projects: response.data
       });
-      // console.log('state of projects is', this.state.projects);
     });
   },
   createListUniqueSkills(arr){
@@ -55,7 +54,9 @@ const Home = React.createClass({
           uniqueSkills={this.state.uniqueSkills}
         />
         <HomeUI
-          allProjects={this.state.projects}/>
+          allProjects={this.state.projects}
+          />
+
       </div>
     )
   }
