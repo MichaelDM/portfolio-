@@ -1,31 +1,37 @@
 import React from 'react';
 
-const SkillList= React.createClass({
-  render(){
-    const skills = function(arr){
-      if (typeof(arr)!== 'object'){
-        return '';
-      } else {
-        arr.map(obj=>{
-            return <span>{obj}</span>
-        });
-      }
-    };
+const SkillList= React.createClass ({
+  render (){
+    // console.log('this props allSkills', this.props.allSkills);
+    // console.log(typeof(this.props.allSkills));
     return (
-      <li>{skills(this.props.allSkills)}</li>
-    )
-  }
+      <ul>
+        {this.props.allSkills.map(function(obj){
+          return <li key={obj}>{obj}</li>
+        })}
+      </ul>
+      )
+    }
 });
 
 const GridImageUI = React.createClass({
-  gitInitialState(){
+  getInitialState(){
     return {
-      skills: ''
+      arrLength : 0,
+      skillList: ['']
     }
   },
   componentDidUpdate(){
-
-  }
+    if (this.props.object.skills.length === this.state.arrLength){
+      console.log('skill state same');
+    } else {
+      this.setState({
+        arrLength: this.props.object.skills.length,
+        skillList: this.props.object.skills
+      });
+      console.log('changing skill state');
+    }
+  },
   render(){
     const returnClass = function(skills) {
       if (typeof(skills) === 'object'){
@@ -38,9 +44,9 @@ const GridImageUI = React.createClass({
           <img src={this.props.object.thumbnail} />
         </span>
         <span className="skillListGrid">
-          <ul>
-            <SkillList allSkills={this.props.object.skills}/>
-          </ul>
+        <span>
+            <SkillList allSkills={this.state.skillList}/>
+        </span>
         </span>
         <div className="projTitle">
           {this.props.object.title}
