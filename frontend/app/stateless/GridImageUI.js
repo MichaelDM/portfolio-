@@ -41,12 +41,12 @@ const GridImageUI = React.createClass({
     return (
       <figure className={returnClass(this.props.object.skills)+' gridImage'}>
         <span className="imageWrapper">
-          <img src={this.props.object.thumbnail} />
-        </span>
-        <span className="skillListGrid">
-        <span>
-            <SkillList allSkills={this.state.skillList}/>
-        </span>
+          <span className="imageWrapperInternal">
+            <img src={this.props.object.thumbnail} />
+            <span className="skillListGrid">
+                <SkillList allSkills={this.state.skillList}/>
+            </span>
+          </span>
         </span>
         <div className="projTitle">
           {this.props.object.title}
