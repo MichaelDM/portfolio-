@@ -55,7 +55,6 @@ const Home = React.createClass({
         />
         <HomeUI
           allProjects={this.state.projects}
-          classieUpdateCount={this.state.classieUpdateCount}
           />
       </div>
     )
