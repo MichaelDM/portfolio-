@@ -1,12 +1,31 @@
 import React from 'react';
 
-const SkillList= props => {
-  return (
-    <li>{props.allSkills}</li>
-  )
-};
+const SkillList= React.createClass({
+  render(){
+    const skills = function(arr){
+      if (typeof(arr)!== 'object'){
+        return '';
+      } else {
+        arr.map(obj=>{
+            return <span>{obj}</span>
+        });
+      }
+    };
+    return (
+      <li>{skills(this.props.allSkills)}</li>
+    )
+  }
+});
 
 const GridImageUI = React.createClass({
+  gitInitialState(){
+    return {
+      skills: ''
+    }
+  },
+  componentDidUpdate(){
+
+  }
   render(){
     const returnClass = function(skills) {
       if (typeof(skills) === 'object'){
