@@ -2,6 +2,8 @@ import React from 'react';
 import HomeUI from '../Components/HomeUI';
 import FilterNav from '../Components/FilterNav';
 import helpers from '../Utils/ajaxHelpers';
+import Navigator from '../stateless/Navigator';
+
 
 const Home = React.createClass({
   getInitialState(){
@@ -13,20 +15,33 @@ const Home = React.createClass({
         {image: ''},
         {content: ''}
       ],
-      uniqueSkills: []
+      uniqueSkills: [],
+      name: '',
+      linkedin: '',
+      github: ''
     }
   },
   //making ajax call to get all projects to pass them down as a prop
   componentDidMount(){
+    //getting navigator
+    // getting project
     helpers.projects.getProjects()
     .then(response => {
       //getting all skills (with redundancies)
       const allSkills= response.data.map(obj => {
           return obj.skills
       });
-      this.setState({
-        uniqueSkills: this.createListUniqueSkills(allSkills),
-        projects: response.data
+      var responseProjects= response.data;
+      // getting navigator (because need to setState only once for classie to be updated only once and work)
+      helpers.users.getUsers()
+      .then(response => {
+        this.setState({
+          name: response.data[0].name,
+          linkedin: response.data[0].linkedin,
+          github: response.data[0].github,
+          uniqueSkills: this.createListUniqueSkills(allSkills),
+          projects: responseProjects
+        });
       });
     });
   },
@@ -47,9 +62,17 @@ const Home = React.createClass({
     // console.log('usk', uniqueSkills);
     return uniqueSkillsArr;
   },
+  handleResetFilter(){
+  },
   render(){
     return (
       <div>
+        <Navigator
+          name={this.state.name}
+          linkedin={this.state.linkedin}
+          github={this.state.github}
+          onResetFilter={this.handleResetFilter}
+        />
         <FilterNav uniqueSkills={this.state.uniqueSkills}/>
         <HomeUI allProjects={this.state.projects}/>
       </div>
