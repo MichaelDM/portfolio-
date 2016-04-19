@@ -6,7 +6,6 @@ const Home = React.createClass({
   render(){
     return(
       <div className="homeExternal">
-
         <HomeUI allProjects={this.props.allProjects}/>
       </div>
     )
